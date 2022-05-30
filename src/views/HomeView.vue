@@ -1,6 +1,7 @@
 <template>
   <main v-if="!loading">
     <DataTitle :text="title" :dataDate="dataDate" />
+    <DataBoxes :stats="stats" />
   </main>
   <main v-else class="flex flex-col align-center justify-center text-center">
     <div class="text-graty-500 text-3xl mt-10 mb-6">Fetching data</div>
@@ -10,8 +11,9 @@
 
 <script>
 import DataTitle from "../components/DataTitle.vue";
+import DataBoxes from "../components/DataBoxes.vue";
 export default {
-  components: { DataTitle },
+  components: { DataTitle, DataBoxes },
   name: "HomeView",
   data() {
     return {
