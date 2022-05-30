@@ -1,5 +1,7 @@
 <template>
-  <main v-if="!loading">Show data</main>
+  <main v-if="!loading">
+    <DataTitle :text="title" :dataDate="dataDate" />
+  </main>
   <main v-else class="flex flex-col align-center justify-center text-center">
     <div class="text-graty-500 text-3xl mt-10 mb-6">Fetching data</div>
     <img :src="loadingImage" class="w-24 m-auto" alt="" />
@@ -7,7 +9,9 @@
 </template>
 
 <script>
+import DataTitle from "../components/DataTitle.vue";
 export default {
+  components: { DataTitle },
   name: "HomeView",
   data() {
     return {
@@ -27,11 +31,11 @@ export default {
     },
   },
   async created() {
-    const data = this.fetchCovidData();
+    const data = await this.fetchCovidData();
     this.dataDate = data.Date;
     this.stats = data.Global;
     this.countries = data.Countries;
-    this.loading = true;
+    this.loading = false;
   },
 };
 </script>
