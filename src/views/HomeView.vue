@@ -1,5 +1,6 @@
 <template>
   <main v-if="!loading">
+    <CountrySelect :countries="countries" />
     <DataTitle :text="title" :dataDate="dataDate" />
     <DataBoxes :stats="stats" />
   </main>
@@ -12,8 +13,9 @@
 <script>
 import DataTitle from "../components/DataTitle.vue";
 import DataBoxes from "../components/DataBoxes.vue";
+import CountrySelect from "../components/CountrySelect.vue";
 export default {
-  components: { DataTitle, DataBoxes },
+  components: { DataTitle, DataBoxes, CountrySelect },
   name: "HomeView",
   data() {
     return {
